@@ -1,0 +1,42 @@
+version: '3.1'
+services:
+  docker-postgres:
+    image: postgres:latest
+    container_name: docker-postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgresDB
+      - POSTGRES_PASSWORD=Cs.ylmz82
+    ports:
+      - 5432:5432
+    #networks:
+    #  - postgres
+    restart: always
+
+  docker-mongodb:
+    image: mongo:latest
+    container_name: docker-mongodb
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: Cs.ylmz82
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_DATABASE: mongoDB
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+    #networks:
+    #  - mongo
+    restart: always
+
+#networks:
+#  postgres:
+#    driver: bridge
+#  mongo:
+#    driver: bridge
+
+
+volumes:
+    postgres:
+    mongo:
